@@ -1,0 +1,15 @@
+# Material 3 Expressive for Flutter
+
+Independent, source-traceable documentation. Not an official Google specification and not a compliance guarantee.
+
+Start with:
+- [Scope and terminology](docs/getting-started/scope.md)
+- [Support matrix](docs/reference/support-matrix.md)
+- [Agent workflow](docs/ai-agent-guide/implementation-workflow.md)
+- [Foundations](docs/foundations/index.md)
+- [Component catalog](docs/components/index.md)
+- [Flutter guide](docs/flutter/index.md)
+- [Platform guides](docs/platforms/index.md)
+- [Source catalog](docs/reference/official-sources.md)
+
+Use [AGENTS.md](AGENTS.md) for required coding-agent behavior. All exact technical claims must be traced to sources in the relevant page or [source catalog](docs/reference/official-sources.md).

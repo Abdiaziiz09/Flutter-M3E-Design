@@ -1,0 +1,28 @@
+name: Documentation inaccuracy
+description: Report an incorrect, outdated, or unsupported claim.
+title: "[Inaccuracy] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Affected page or file
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim and correction
+      description: Quote or summarize the claim and explain what should change.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Authoritative source URL
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Relevant Flutter, platform, or source version

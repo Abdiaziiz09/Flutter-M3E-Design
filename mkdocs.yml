@@ -1,0 +1,82 @@
+site_name: M3 Expressive for Flutter
+site_description: An independent, source-traceable implementation guide for Material 3 Expressive-informed Flutter interfaces.
+docs_dir: docs
+strict: true
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+  - Getting started:
+      - Scope and terminology: getting-started/scope.md
+  - Foundations:
+      - Overview: foundations/index.md
+      - Color: foundations/color.md
+      - Typography: foundations/typography.md
+      - Shape: foundations/shape.md
+      - Elevation and surfaces: foundations/elevation-and-surfaces.md
+      - Spacing and layout: foundations/spacing-and-layout.md
+      - Icons: foundations/icons.md
+      - Motion: foundations/motion.md
+      - Accessibility: foundations/accessibility.md
+      - Responsive design: foundations/responsive-design.md
+  - Components:
+      - Overview and coverage: components/index.md
+      - Actions and navigation: components/actions-and-navigation.md
+      - Content and selection: components/content-and-selection.md
+      - Input and feedback: components/input-and-feedback.md
+  - Theming: theming/index.md
+  - Flutter:
+      - Overview: flutter/index.md
+      - Setup: flutter/setup.md
+      - Theme configuration: flutter/theme-configuration.md
+      - Custom components: flutter/custom-components.md
+      - Animation: flutter/animations.md
+      - Testing: flutter/testing.md
+  - Platforms:
+      - Overview: platforms/index.md
+      - Android: platforms/android.md
+      - iOS: platforms/ios.md
+      - Web: platforms/web.md
+      - Windows: platforms/windows.md
+      - macOS: platforms/macos.md
+      - Linux: platforms/linux.md
+  - Design recipes:
+      - Overview: design-recipes/index.md
+  - AI agent guide:
+      - Overview: ai-agent-guide/index.md
+      - Workflow: ai-agent-guide/implementation-workflow.md
+      - Decision rules: ai-agent-guide/design-decision-rules.md
+      - Platform selection: ai-agent-guide/platform-selection.md
+      - Validation checklist: ai-agent-guide/validation-checklist.md
+      - Anti-patterns: ai-agent-guide/anti-patterns.md
+  - Reference:
+      - Official source catalog: reference/official-sources.md
+      - Flutter API reference: reference/flutter-api-reference.md
+      - Support matrix: reference/support-matrix.md
+      - Component coverage: reference/component-coverage.md
+      - Glossary: reference/glossary.md
+      - Publishing: reference/publishing.md

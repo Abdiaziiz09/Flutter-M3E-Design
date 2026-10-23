@@ -1,0 +1,25 @@
+# Consolidated agent reference
+
+This maintained entry file points to canonical documentation; it is intentionally not a copied snapshot. A copied full-document bundle would silently become stale. Use the repository tree or build the MkDocs site to retrieve complete content.
+
+## Essential rules
+
+- M3 Expressive is an evolution and extension of Material 3, not an inference that every M3 component has an expressive variant.
+- Flutter's Material 3 support and `useMaterial3` do not establish complete M3 Expressive behavior.
+- Use authoritative source evidence; distinguish Material guidance, Flutter API facts, and local implementation decisions.
+- Do not invent values or report untested support/compliance.
+- Implement responsive and accessible behavior for actual target platforms and input types.
+
+## Canonical pages
+
+- Scope: `docs/getting-started/scope.md`
+- Foundation index: `docs/foundations/index.md`
+- Component index: `docs/components/index.md`
+- Flutter implementation: `docs/flutter/index.md`
+- Platform overview: `docs/platforms/index.md`
+- Source catalog: `docs/reference/official-sources.md`
+- Support matrix: `docs/reference/support-matrix.md`
+- Agent workflow and checklist: `docs/ai-agent-guide/implementation-workflow.md`, `docs/ai-agent-guide/validation-checklist.md`
+- Full machine-facing index: `llms.txt`
+
+Do not manually duplicate these pages into this file. Update the canonical documents and this concise index together as needed.

@@ -1,0 +1,17 @@
+name: Documentation request
+description: Request a missing page, platform detail, example, or component reference.
+title: "[Request] "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What is missing?
+      description: Describe the implementation decision this documentation should help resolve.
+    validations:
+      required: true
+  - type: input
+    id: sources
+    attributes:
+      label: Known authoritative sources
+      description: Add source URLs if available.

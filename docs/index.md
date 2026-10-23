@@ -1,0 +1,26 @@
+# M3 Expressive implementation reference
+
+This independent guide helps teams build Material 3 Expressive-informed interfaces with Flutter while keeping design guidance, Flutter API behavior, and implementation choices distinct.
+
+## Start
+
+- Read [scope and terminology](getting-started/scope.md) before applying design claims.
+- Check [platform and feature support](reference/support-matrix.md).
+- Navigate [foundations](foundations/index.md), [components](components/index.md), [Flutter](flutter/index.md), and [platform guidance](platforms/index.md).
+- For agents, begin with the repository-root `AGENTS.md` and [workflow](ai-agent-guide/implementation-workflow.md).
+
+## Evidence and dates
+
+Source links and access notes are maintained in [the catalog](reference/official-sources.md). Source retrieval was performed on 2026-10-23 where marked verified. Material's interactive site does not expose every detail through text retrieval; verify design assets and current content directly before relying on specific geometry. Exact values absent from accessible authoritative text are deliberately not reproduced.
+
+## Fidelity model
+
+This guide targets evidence-based fidelity, not certification. Evaluate each requirement as:
+
+1. Design intent and applicable official reference identified.
+2. Flutter capability verified at the selected SDK.
+3. Platform-specific behavior accounted for.
+4. Interaction, accessibility, responsive behavior, and appearance checked.
+5. Deviations and unknowns recorded.
+
+See the [visual verification checklist](ai-agent-guide/validation-checklist.md).

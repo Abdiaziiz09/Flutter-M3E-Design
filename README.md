@@ -27,6 +27,8 @@ Flutter's Material library implements Material Design components and theming. Se
 
 *Official Material illustration; the article caption identifies the updated type scale and emphasized text styles. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
 
+Use typography as a hierarchy system, not a collection of arbitrary sizes. In Flutter, map the design roles to `TextTheme` entries and validate text scaling, long localization, and RTL flows. Exact expressive type-token values are not assumed unless the active Material source states them directly.
+
 ### Shape
 
 [![Material shape library example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi7e8z9-blog3.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
@@ -150,4 +152,4 @@ Material's interactive pages may not expose every specification detail through t
 
 Images in this README are embedded from Google-hosted Material Design pages, with links to their source pages. The image files are not copied into this repository; rights remain with their respective owners. This attribution and linking do not assert a separate license to download, modify, or redistribute them. See [Google Terms of Service](https://policies.google.com/terms) and the relevant Material source pages for current terms.
 
-The original source list is preserved in [link_sources.md](link_sources.md). To report an inaccuracy or propose a source-backed change, follow [contribution guidance](CONTRIBUTING.md). The repository intentionally makes no claim of universal or 100% compliance.
+The original source list is preserved in [link_sources.md](link_sources.md) and the source catalog in [docs/reference/official-sources.md](docs/reference/official-sources.md). To report an inaccuracy or propose a source-backed change, follow [contribution guidance](CONTRIBUTING.md). The repository intentionally makes no claim of universal or 100% compliance.

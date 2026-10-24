@@ -10,6 +10,23 @@ Typography establishes hierarchy, readability, and emphasis. Material 3 defines 
 - Preserve user text scaling; avoid fixed-height text containers and clipping.
 - Choose font families with the required script coverage and test fallback, weight availability, and line wrapping.
 
+A practical Flutter mapping is to start from `ThemeData.textTheme` and tune only the roles required for the app. Example:
+
+```dart
+ThemeData(
+  useMaterial3: true,
+  textTheme: Typography.material2021().black.copyWith(
+    displayLarge: const TextStyle(fontWeight: FontWeight.w400),
+    headlineMedium: const TextStyle(fontWeight: FontWeight.w500),
+    titleLarge: const TextStyle(fontWeight: FontWeight.w600),
+    bodyLarge: const TextStyle(fontWeight: FontWeight.w400),
+    labelLarge: const TextStyle(fontWeight: FontWeight.w500),
+  ),
+);
+```
+
+This is a template for a Flutter theme, not a guarantee of a current M3 Expressive token set. Verify role names and exact values against the target design source and SDK. Many expressive variants are design decisions that remain component- and app-specific unless a direct official source states otherwise.
+
 ## Verification
 
-Review headings, body, labels, numeric content, long translations, large text scale, and RTL. Confirm text remains readable and controls grow or reflow instead of clipping.
+Review headings, body, labels, numeric content, long translations, large text scale, and RTL. Confirm text remains readable and controls grow or reflow instead of clipping. Verify that long translations, dense layouts, and narrow windows do not force overflow or cut off essential labels.

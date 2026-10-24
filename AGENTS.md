@@ -20,6 +20,23 @@ Use this repository as an independent implementation reference, not as an offici
 - Test relevant component states and each available target platform. Report what was not tested.
 - Never claim full compliance without a defined scope, source evidence, and visual/accessibility validation.
 
+## Negative constraints and guardrails
+
+The following are explicit non-goals and anti-patterns. If a requirement is not supported by a direct Material Design page, current Flutter API, or a clearly documented project decision, do not infer it.
+
+- Do not assume a baseline Material 3 component is automatically an M3 Expressive component.
+- Do not copy a component shape, elevation, or animation solely because it looks similar in a reference image; verify the source and platform API.
+- Do not treat a screenshot resemblance, theme flag, or component family name as proof of matching anatomy, tokens, or motion.
+- Do not claim a component "supports" a state that the current Flutter API or source page does not document unless you confirm it in the target SDK.
+- Do not use hard-coded colors, radii, spacing, or timing values when a semantic theme or composition rule is available.
+- Do not ignore large text, reduced-motion settings, keyboard focus, or RTL/localization as secondary concerns.
+- Do not claim a design is fully compliant without recording the scope, tested target platforms, and unresolved risks.
+- Do not recommend a deprecated or migration-sensitive API without documenting why it remains necessary for the supported SDK range.
+
+## Required completion note
+
+Summarize files changed, platform/version tested, commands and actual outcomes, deviations or unsupported features, and remaining uncertainty. Follow [the implementation workflow](docs/ai-agent-guide/implementation-workflow.md).
+
 ## Sources and conflicts
 
 Prefer current official Material guidance for design intent, Flutter API docs for Flutter behavior, and official platform docs for OS integration. Use the most specific applicable component/platform/version source. When authoritative sources conflict, state the discrepancy and avoid silently choosing a convenient claim. See [decision rules](docs/ai-agent-guide/design-decision-rules.md).

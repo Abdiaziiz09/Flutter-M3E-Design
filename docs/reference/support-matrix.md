@@ -26,4 +26,19 @@ Use the same status vocabulary as the [component coverage matrix](component-cove
 | macOS | **Platform-dependent**; setup required | Plugin/OS-dependent | keyboard, pointer, window, VoiceOver | Per-app verification |
 | Linux | **Platform-dependent**; distribution-dependent | Environment/plugin-dependent | keyboard, pointer, scaling, assistive tech | Per-app verification |
 
+## Platform behavioral adaptation matrix
+
+This matrix documents the implementation questions that must be resolved before claiming a design is "Expressive" on a given target.
+
+| Platform | Primary interaction model | Required validation | Typical risk pattern | Decision rule |
+|---|---|---|---|---|
+| Android | touch + system chrome + TalkBack | edge-to-edge, IME, back navigation, high text, large screens | controls disappear under safe-area rules or overlap with system UI | prefer platform-appropriate safe-area and navigation behavior over forcing a desktop pattern |
+| iOS | touch + VoiceOver + safe-area constraints | safe areas, Dynamic Type, navigation gestures, split-view resizing | labels truncate or action order becomes inconsistent | respect iOS reading direction and platform navigation semantics |
+| Web | keyboard + pointer + browser resizing | focus rings, zoom, screen-reader labels, keyboard activation | hover-state visual affordance becomes the only state cue | ensure keyboard, pointer, and screen-reader states are all explicit |
+| Windows | keyboard + pointer + DPI scaling | Narrator, focus order, resizing, DPI-aware layouts | control hit targets get too small or clip under DPI scaling | verify accessibility, focus, and scaling before claiming parity |
+| macOS | keyboard + pointer + windows | VoiceOver, resizing, trackpad gestures, menu semantics | modal patterns become inconsistent across window sizes | test with standard pointer and keyboard expectations, not only touch |
+| Linux | keyboard + pointer + desktop environment differences | focus visibility, scale factors, assistive-tech availability, window manager behavior | layouts feel correct on one desktop but fail on another | validate on the actual target environment rather than a generic Linux assumption |
+
+This matrix is deliberately qualitative and should be used alongside the [platform guides](../platforms/index.md) and the [visual checklist](../ai-agent-guide/validation-checklist.md). It does not claim universal or identical Material rendering across all operating systems.
+
 This matrix is deliberately qualitative. See Flutter's current [supported platforms](https://docs.flutter.dev/reference/supported-platforms) and the individual platform guides. It does not assert full component parity or identical rendering.

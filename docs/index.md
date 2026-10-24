@@ -6,6 +6,7 @@ This independent guide helps teams build Material 3 Expressive-informed interfac
 
 - Read [scope and terminology](getting-started/scope.md) before applying design claims.
 - Check [platform and feature support](reference/support-matrix.md).
+- Use the [38-entry component inventory](reference/m3e-master-component-inventory.csv), [source-evidence ledger](reference/m3e-source-evidence-ledger.csv), and [Phase 0/1 audit](reference/m3e-phase0-1-audit.md) to distinguish listed topics from verified requirements.
 - Navigate [foundations](foundations/index.md), [components](components/index.md), [Flutter](flutter/index.md), and [platform guidance](platforms/index.md).
 - For agents, begin with the repository-root `AGENTS.md` and [workflow](ai-agent-guide/implementation-workflow.md).
 

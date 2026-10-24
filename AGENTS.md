@@ -8,6 +8,7 @@ Use this repository as an independent implementation reference, not as an offici
 2. Identify framework, Flutter version, target platforms, viewport/window behavior, input devices, localization/RTL needs, and accessibility requirements.
 3. Read the relevant foundation and component pages, then check their primary-source references and version notes.
 4. Separate official M3 guidance from Flutter API facts and this repository's implementation recommendations.
+5. For component scope and evidence status, consult the [38-entry inventory](docs/reference/m3e-master-component-inventory.csv), [source-evidence ledger](docs/reference/m3e-source-evidence-ledger.csv), and [Phase 0/1 audit](docs/reference/m3e-phase0-1-audit.md). Do not treat a listed API or a documentation-readiness score as proof of M3E conformance.
 
 ## Implementation rules
 

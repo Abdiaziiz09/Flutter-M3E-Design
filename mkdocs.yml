@@ -50,6 +50,7 @@ nav:
       - Input and feedback: components/input-and-feedback.md
       - M3E component deep dives: components/expressive-component-deep-dives.md
       - Component verification ledger: reference/component-verification-ledger.md
+      - Phase 0/1 audit: reference/m3e-phase0-1-audit.md
   - Theming: theming/index.md
   - Flutter:
       - Overview: flutter/index.md

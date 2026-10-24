@@ -24,6 +24,8 @@ The following canonical Material component pages were checked by title and text-
 | Component source | URL | What the accessible source confirms | Limitation |
 |---|---|---|---|
 | Button groups | https://m3.material.io/components/button-groups/overview | Page describes groups as organizing buttons and adding interactions. | Detailed anatomy/variants not fully inspected. |
+| Toolbars | https://m3.material.io/components/toolbars/overview | Listed as an M3E component in the Flutter umbrella issue cited by the Phase 0/1 audit. | Full Material component page was not independently reviewed in this audit. |
+| Bottom app bar | https://m3.material.io/components/bottom-app-bar/overview | Canonical source URL recorded by the component inventory. | Not individually reviewed in the supplied audit; M3E status remains unestablished. |
 | Split buttons | https://m3.material.io/components/split-button/overview | Page describes a menu of options related to an action. | Interaction states and visual specification not fully inspected. |
 | FAB menu | https://m3.material.io/components/fab-menu/overview | Page describes multiple related actions opening from a FAB. | Full motion/anatomy guidance not extracted. |
 | Badges | https://m3.material.io/components/badges/overview | Page describes notification, count, or status information attached to navigation items/icons; labels or numbers may be used. | Detailed usage guidance not fully extracted. |
@@ -43,6 +45,7 @@ The following canonical Material component pages were checked by title and text-
 | Accessibility and internationalization | Flutter / guide | https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility | Flutter accessibility guidance | URL recorded; exact current page content not retrieved. |
 | Supported platforms | Flutter / reference | https://docs.flutter.dev/reference/supported-platforms | Flutter platform support | Official source; verify current platform/OS versions. |
 | Platform integration | Flutter / guide | https://docs.flutter.dev/platform-integration | Native platform integration and setup | Verified overview. |
+| Material/Cupertino package migration | Flutter / migration guide | https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui | Standalone `material_ui` and `cupertino_ui` package availability and migration context | Phase 0/1 audit reports this as relevant to Flutter 3.47; verify current package and import guidance for the target SDK. |
 
 
 ### Component API sources checked 2026-10-24
@@ -56,6 +59,16 @@ The following canonical Material component pages were checked by title and text-
 | Divider | https://api.flutter.dev/flutter/material/Divider-class.html | Separator widget with documented list/drawer use. | Verify selected SDK and semantic output. |
 | Scaffold end drawer | https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html | Side panel attached to scaffold edge; drawer API is not a side-sheet equivalence claim. | Verify directionality and behavior in the app SDK. |
 | Time picker | https://api.flutter.dev/flutter/material/showTimePicker.html | Dialog API exposes entry mode and returns selected time or cancellation. | Verify locale, theming, and behavior against the app SDK. |
+
+### Flutter M3 Expressive issue-tracker context reported 2026-10-24
+
+These issue-tracker references are implementation-status evidence, not normative Material design specifications. Their titles, status, and discussion can change; the supplied Phase 0/1 audit reports their state at review time, and this integration did not independently re-fetch them.
+
+| Reference | URL | Audit use | Limitation |
+|---|---|---|---|
+| M3E umbrella issue | https://github.com/flutter/flutter/issues/168813 | Tracks Flutter's M3E component/style work and reports “15 new or updated components.” | The audit noted 14 named entries in the rendered list; reconcile the discrepancy against the live issue and Material catalog before freezing scope. |
+| Button groups proposal | https://github.com/flutter/flutter/issues/184936 | Evidence that a dedicated button-group implementation is distinct from assuming an existing `SegmentedButton` is sufficient. | Reported as Backlog in the supplied audit's 2026-10-24 snapshot; not independently re-checked here. |
+| Buttons proposal | https://github.com/flutter/flutter/issues/184937 | Evidence that M3E button changes have a separate Flutter proposal. | Reported as Backlog in the supplied audit's 2026-10-24 snapshot; not independently re-checked here. |
 
 ## Packages and implementation repositories
 

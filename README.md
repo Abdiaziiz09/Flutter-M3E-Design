@@ -69,6 +69,8 @@ The examples below are served from Google's Material Design hosting and link to 
 
 For other component mappings, applicable states, Flutter SDK evidence, and visual-test gaps, see the [component catalog](docs/components/index.md), [component coverage matrix](docs/reference/component-coverage.md), and [verification ledger](docs/reference/component-verification-ledger.md).
 
+The [Phase 0/1 audit](docs/reference/m3e-phase0-1-audit.md) records the documentation-readiness rubric and its limitations. Its [38-entry component inventory](docs/reference/m3e-master-component-inventory.csv) and [source-evidence ledger](docs/reference/m3e-source-evidence-ledger.csv) are audit artifacts, not M3E conformance claims.
+
 ## Start implementing
 
 [![Material 3 Expressive navigation bar visual example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmae7qe43-02.png?alt=media)](https://m3.material.io/components/navigation-bar/overview)

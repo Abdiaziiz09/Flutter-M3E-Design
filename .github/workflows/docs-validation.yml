@@ -18,12 +18,13 @@ jobs:
       - run: mkdocs build --strict
 
   flutter-example:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: "3.47.7"
       - working-directory: examples/flutter/reference_app
         run: flutter pub get
       - working-directory: examples/flutter/reference_app

@@ -6,7 +6,7 @@ Use the repository-root `AGENTS.md` before implementation. This guide is the ope
 
 **New to this repository?** Read in this order:
 
-1. [`AGENTS.md`](../../AGENTS.md) — mandatory rules and error-handling scenarios
+1. [`AGENTS.md`](https://github.com/Abdiaziiz09/Flutter-M3E-Design/blob/main/AGENTS.md) — mandatory rules and error-handling scenarios
 2. [M3E quick-start](m3e-quick-start.md) — complete step-by-step workflow for AI agents
 3. [Getting started: scope](../getting-started/scope.md) — what M3E is and what it is not
 4. [Design token registry](../foundations/design-token-registry.md) — every token with value, accessor, and evidence grade

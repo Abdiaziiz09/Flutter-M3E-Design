@@ -20,6 +20,29 @@ Use this repository as an independent implementation reference, not as an offici
 - Test relevant component states and each available target platform. Report what was not tested.
 - Never claim full compliance without a defined scope, source evidence, and visual/accessibility validation.
 
+## Strict Token Enforcement (Zero Magic Numbers)
+
+> [!IMPORTANT]
+> **Strict Operational Rule**: AI agents and developers are **strictly forbidden** from writing raw numeric values ("Magic Numbers") for margins, paddings, layout bounds, border radii, or animation durations.
+>
+> All layout and styling parameters must strictly derive from standard tokens via `context.m3e` or `M3EThemeExtension`.
+
+1. **Spacing & Insets**:
+   - Always use `context.m3e.spacing.*` tokens or predefined insets:
+     - Spacing scale: `space4`, `space8`, `space12`, `space16`, `space24`, `space32`, `space48`, etc.
+     - Inset shortcuts: `insetsAll16`, `insetsHorizontal16`, `insetsCardPadding`, `insetsScreenEdge`.
+2. **Shapes & Radii**:
+   - Always use `context.m3e.shapes.*` tokens or named expressive shapes:
+     - Standard radii: `shapes.radiusNone`, `shapes.radiusSmall` (8dp), `shapes.radiusMedium` (12dp), `shapes.radiusLarge` (16dp), `shapes.radiusExtraLarge` (28dp), `shapes.radiusFull` (9999dp).
+     - Named expressive shapes: `shapes.clover4Leaf`, `shapes.squircle`, `shapes.burst`, `shapes.cookie9Sided`, `shapes.pill`, etc.
+3. **Motion Physics**:
+   - Always use `context.m3e.motion.*` spring simulations and standard durations:
+     - Spatial transitions: `motion.createSpatialSpring()` (overshoot-enabled spring simulation).
+     - Effect transitions: `motion.createEffectSpring()` (critically damped spring simulation).
+     - Durations: `motion.durationShort`, `durationMedium`, `durationLong`.
+
+---
+
 ## Negative constraints and guardrails
 
 The following are explicit non-goals and anti-patterns. If a requirement is not supported by a direct Material Design page, current Flutter API, or a clearly documented project decision, do not infer it.
@@ -33,13 +56,191 @@ The following are explicit non-goals and anti-patterns. If a requirement is not 
 - Do not claim a design is fully compliant without recording the scope, tested target platforms, and unresolved risks.
 - Do not recommend a deprecated or migration-sensitive API without documenting why it remains necessary for the supported SDK range.
 
-## Required completion note
+---
 
-Summarize files changed, platform/version tested, commands and actual outcomes, deviations or unsupported features, and remaining uncertainty. Follow [the implementation workflow](docs/ai-agent-guide/implementation-workflow.md).
+## Error-Handling Scenarios & Compliant Resolutions
+
+When generating or refactoring Flutter code, AI agents frequently encounter edge cases. Below are the 3 most common failure scenarios, their root causes, and their normative M3E-compliant resolutions.
+
+### Scenario 1: Layout Pixel Overflow (`RenderFlex` Overflow)
+
+**Root Cause**: Hard-coded column or row sizing without flexibility when rendered on compact screens or when an on-screen keyboard appears.
+
+❌ **Non-Compliant Example**:
+```dart
+// BAD: Magic numbers and inflexible Column causes RenderFlex overflow on small viewports
+Widget buildHeaderBad(BuildContext context) {
+  return Container(
+    height: 180, // Magic number
+    padding: const EdgeInsets.all(16.0), // Magic number
+    child: Row(
+      children: [
+        const Icon(Icons.star, size: 48),
+        Container(width: 16), // Magic number
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Very Long Title That Overflows Mobile Viewports Rapidly',
+                style: TextStyle(fontSize: 24)), // Non-semantic
+            Text('Detailed description explaining the expressive item feature set.'),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+```
+
+✅ **Compliant M3E Resolution**:
+```dart
+// GOOD: Responsive constraints, context.m3e tokens, and flexible text wrapping
+Widget buildHeaderCompliant(BuildContext context) {
+  final m3e = context.m3e;
+  final theme = Theme.of(context);
+
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      return Container(
+        padding: m3e.spacing.insetsCardPadding,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: m3e.shapes.borderLarge,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.star_rounded,
+              size: m3e.spacing.space32,
+              color: theme.colorScheme.primary,
+            ),
+            SizedBox(width: m3e.spacing.space16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Very Long Title That Wraps Correctly Across All Viewports',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.onSurface,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: m3e.spacing.space4),
+                  Text(
+                    'Detailed description explaining the expressive item feature set.',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+```
+
+---
+
+### Scenario 2: Text Truncation under Extreme Text Scaling (200%)
+
+**Root Cause**: Fixed container heights (`height: 48`) or clipping containers that do not account for users with accessibility text scaling enabled (up to 2.0x font scale).
+
+❌ **Non-Compliant Example**:
+```dart
+// BAD: Fixed container height truncates text when text scale > 1.2
+Widget buildActionTileBad(BuildContext context, String title) {
+  return Container(
+    height: 52, // Fixed height causes vertical overflow when text is scaled
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    child: Text(title, maxLines: 1), // Truncates or clips under large font settings
+  );
+}
+```
+
+✅ **Compliant M3E Resolution**:
+```dart
+// GOOD: Dynamic intrinsic height with minimum accessible tap targets and auto-wrap
+Widget buildActionTileCompliant(BuildContext context, String title) {
+  final m3e = context.m3e;
+  final theme = Theme.of(context);
+
+  return ConstrainedBox(
+    constraints: BoxConstraints(
+      minHeight: m3e.spacing.space48, // Respects 48dp minimum accessible touch target
+    ),
+    child: Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.symmetric(
+        horizontal: m3e.spacing.space16,
+        vertical: m3e.spacing.space12,
+      ),
+      child: Text(
+        title,
+        style: theme.textTheme.labelLarge?.copyWith(
+          color: theme.colorScheme.onSurface,
+        ),
+        softWrap: true, // Allows wrapping naturally under large text scaling
+      ),
+    ),
+  );
+}
+```
+
+---
+
+### Scenario 3: Hit Target Boundary Clipping on Dense Controls
+
+**Root Cause**: Shrinking buttons or interactive elements below the WCAG / Material minimum touch target of 48x48dp without padding expanding the touch zone.
+
+❌ **Non-Compliant Example**:
+```dart
+// BAD: Compact icon button with 28x28 hit target violates WCAG touch target standards
+Widget buildSmallIconButtonBad(BuildContext context, VoidCallback onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: const SizedBox(
+      width: 28,
+      height: 28,
+      child: Icon(Icons.close, size: 16),
+    ),
+  );
+}
+```
+
+✅ **Compliant M3E Resolution**:
+```dart
+// GOOD: Uses IconButton with standard minimum touch bounds or explicit MaterialTapTargetSize
+Widget buildSmallIconButtonCompliant(BuildContext context, VoidCallback onTap) {
+  final theme = Theme.of(context);
+
+  return IconButton(
+    onPressed: onTap,
+    iconSize: 20,
+    visualDensity: VisualDensity.compact,
+    style: IconButton.styleFrom(
+      minimumSize: const Size(48, 48), // WCAG 2.1 AA / Material standard 48x48 touch target
+      tapTargetSize: MaterialTapTargetSize.padded,
+      foregroundColor: theme.colorScheme.onSurfaceVariant,
+    ),
+    icon: const Icon(Icons.close_rounded),
+  );
+}
+```
+
+---
 
 ## Sources and conflicts
 
 Prefer current official Material guidance for design intent, Flutter API docs for Flutter behavior, and official platform docs for OS integration. Use the most specific applicable component/platform/version source. When authoritative sources conflict, state the discrepancy and avoid silently choosing a convenient claim. See [decision rules](docs/ai-agent-guide/design-decision-rules.md).
+
+---
 
 ## Required completion note
 

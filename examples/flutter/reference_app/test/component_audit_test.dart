@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
+// Copyright 2026 The Flutter M3E Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:m3_expressive_reference_app/m3e/m3e.dart';
 import 'package:m3_expressive_reference_app/main.dart';
 
 void main() {
@@ -237,6 +242,10 @@ void main() {
 }
 
 Widget _auditApp(Brightness brightness) {
+  final m3eExtension = brightness == Brightness.light
+      ? M3EThemeExtension.standardLight()
+      : M3EThemeExtension.standardDark();
+
   ThemeData createTheme(Brightness themeBrightness) => ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -244,6 +253,7 @@ Widget _auditApp(Brightness brightness) {
           brightness: themeBrightness,
         ),
         visualDensity: VisualDensity.standard,
+        extensions: [m3eExtension],
         cardTheme: CardThemeData(
           elevation: 0,
           shape:

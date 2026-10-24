@@ -1,5 +1,7 @@
 # Content, selection, and containment
 
+For the checked Material source metadata, local Flutter API availability, state checklist, visual tests, and gaps for each row, see the [component verification ledger](../reference/component-verification-ledger.md).
+
 | Design component | Flutter mapping | Implementation notes |
 |---|---|---|
 | Cards | `Card`, `Material`, custom composition | Use cards only where grouping or interaction hierarchy benefits; don't assume every card needs elevation. [Material cards](https://m3.material.io/components/cards/overview). |

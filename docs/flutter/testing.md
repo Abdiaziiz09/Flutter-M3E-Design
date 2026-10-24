@@ -9,6 +9,8 @@ Flutter's official testing guidance describes unit, widget, and integration test
 - **Integration:** navigation flows and platform integration on target devices.
 - **Visual:** screenshots at representative sizes, themes, and text scales; review diffs rather than treating pixel equality as a design oracle.
 
+Flutter widget-test goldens have an important rendering limitation: fallback glyphs use the Ahem test font, so text appears as block glyphs in the committed PNGs. Goldens can flag geometry, color, and layout regressions in this renderer, but they do not validate real glyph typography, browser/device rendering, platform parity, or M3 Expressive visual conformance. Visual inspection of these fixtures supports only that no obvious fixture geometry clipping was observed under this renderer.
+
 ## Example commands
 
 ```bash

@@ -1,72 +1,125 @@
-# Material 3 Expressive for Flutter: verified implementation guide
+# Material 3 Expressive for Flutter
 
-This repository is an independent, source-traceable guide to implementing interfaces informed by Material 3 Expressive (M3 Expressive) with Flutter. It is a practical reference, not an official Google or Flutter specification and not a certification of conformance.
+[![Expressive app bars, toolbars, and buttons](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoia5ltu-blog12.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
+
+*Official Material 3 Expressive example. Open the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
+
+An independent, source-traceable guide for implementing Flutter interfaces informed by Material 3 Expressive (M3 Expressive). This repository is not an official Google or Flutter specification and does not certify conformance.
 
 ## What this repository covers
 
-- M3 Expressive design intent and its relationship to Material 3.
-- Foundations, component selection, Flutter Material theming, and custom implementation decisions.
-- Flutter targets: Android, iOS, web, Windows, macOS, and Linux, with platform-specific limitations called out.
-- Responsive and adaptive layouts, accessibility, testing, and AI-agent workflows.
+[![The expressive color system can create a wide range of accessible palettes](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi9819i-blog4.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
 
-Flutter's Material library implements Material Design components and theming. Setting `ThemeData.useMaterial3` selects Flutter's Material 3 behavior; it does **not** prove that every M3 Expressive component, motion treatment, or platform behavior is implemented. Use the support matrix and component catalog to determine whether a requirement is built in, configurable, custom, or unverified.
+*Official Material illustration about expressive color palettes; see the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
 
-## Quick start
+- Material 3 Expressive design intent, scope, and evidence labels.
+- Foundations, component selection, Flutter theming, and custom implementation decisions.
+- Flutter targets: Android, iOS, web, Windows, macOS, and Linux, with platform limitations called out.
+- Responsive/adaptive layouts, accessibility, localization, testing, and AI-agent workflows.
 
-1. Read [the definition and scope](docs/getting-started/scope.md), [support matrix](docs/reference/support-matrix.md), and [AI agent instructions](AGENTS.md).
-2. Identify the target Flutter version, platforms, input modes, accessibility needs, and relevant components.
-3. Follow the related foundation and component pages; distinguish source-backed guidance from repository recommendations.
-4. Implement with Flutter's built-in Material widgets where they satisfy the requirement. Add custom work only for a verified gap.
-5. Run the visual and accessibility checks in the [validation checklist](docs/ai-agent-guide/validation-checklist.md), plus available automated tests.
-6. Record unsupported behavior and evidence. Never claim complete M3 Expressive compliance without a defined and verified scope.
+Flutter's Material library implements Material Design components and theming. Setting `ThemeData.useMaterial3` selects Flutter's Material 3 behavior; it does **not** prove that every M3 Expressive component, motion treatment, or platform behavior is implemented. Use the [support matrix](docs/reference/support-matrix.md) and [component verification ledger](docs/reference/component-verification-ledger.md) to determine what is API verified, configurable, custom, platform-dependent, or unverified.
+
+## Foundation examples
+
+### Typography
+
+[![Expressive typography can enhance hierarchy and add personality](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi9us2w-blog9.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
+
+*Official Material illustration; the article caption discusses expressive typography and hierarchy. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
+
+### Shape
+
+[![Material shape library example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi7e8z9-blog3.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
+
+*Official Material illustration; the article says its shape library includes 35 iconic shapes. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
+
+For color roles, elevation, spacing, icons, motion, accessibility, and responsive design, use the [foundations guide](docs/foundations/index.md). Exact values are included only where the cited source supports them; unspecified values are not guessed.
+
+## Component visual references
+
+[![Expressive app bars, toolbars, and buttons](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoia5ltu-blog12.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
+
+*Official Material example of expressive component styling. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
+
+The examples below are served from Google's Material Design hosting and link to the relevant official component guidance. They illustrate design intent; they are not Flutter renderings or proof of M3 Expressive parity.
+
+### Buttons
+
+[![Four button changes in the Expressive update](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmmm1tos0-03.png?alt=media)](https://m3.material.io/components/buttons/overview)
+
+*Official Material image. Read the [buttons guidance](https://m3.material.io/components/buttons/overview).*
+
+### Cards
+
+[![Three Material card variants](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flwuilyza-1.png?alt=media)](https://m3.material.io/components/cards/overview)
+
+*Official Material image. Read the [cards guidance](https://m3.material.io/components/cards/overview).*
+
+### Navigation bar
+
+[![Material 3 Expressive navigation bar compared with the baseline navigation bar](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmae7qe43-02.png?alt=media)](https://m3.material.io/components/navigation-bar/overview)
+
+*Official Material image. The page describes the Expressive navigation bar as shorter than the baseline. Read the [navigation bar guidance](https://m3.material.io/components/navigation-bar/overview).*
+
+### Chips
+
+[![Four Material chip variants](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flzthj7vk-1.png?alt=media)](https://m3.material.io/components/chips/overview)
+
+*Official Material image. Read the [chips guidance](https://m3.material.io/components/chips/overview).*
+
+For other component mappings, applicable states, Flutter SDK evidence, and visual-test gaps, see the [component catalog](docs/components/index.md), [component coverage matrix](docs/reference/component-coverage.md), and [verification ledger](docs/reference/component-verification-ledger.md).
+
+## Start implementing
+
+[![Material 3 Expressive navigation bar visual example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmae7qe43-02.png?alt=media)](https://m3.material.io/components/navigation-bar/overview)
+
+*Official Material component reference; Flutter support and appearance must be checked separately.*
+
+1. Read [scope and terminology](docs/getting-started/scope.md), [support matrix](docs/reference/support-matrix.md), and [AI-agent instructions](AGENTS.md).
+2. Identify the target Flutter version, platforms, input modes, localization/RTL needs, and accessibility requirements.
+3. Follow the relevant foundation and component pages. Separate official Material guidance from Flutter API facts and repository recommendations.
+4. Prefer built-in Flutter Material widgets when their verified behavior meets the requirement. Add custom work only for a documented gap.
+5. Run the [validation checklist](docs/ai-agent-guide/validation-checklist.md) and applicable tests; report what was not tested.
 
 ```dart
 MaterialApp(
   theme: ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6750A4)),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color(0xFF6750A4),
+    ),
   ),
   home: const MyHomePage(),
 )
 ```
 
-This is a Material 3 Flutter starting point, not an M3 Expressive compliance recipe. In production, define light/dark schemes, typography and component themes deliberately; validate the resulting UI against applicable M3 Expressive guidance.
+This is a Material 3 Flutter starting point, not an M3 Expressive compliance recipe. Define light/dark schemes, typography, and component themes deliberately, then validate the implementation against the applicable guidance.
 
-## Documentation map
+## Documentation and sample app
+
+[![Three Material card variants](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flwuilyza-1.png?alt=media)](https://m3.material.io/components/cards/overview)
+
+*Official cards visual reference; the repository's Flutter sample is a separate, non-normative implementation example.*
 
 | Topic | Start here |
 |---|---|
 | Scope, evidence labels, and quick setup | [Getting started](docs/getting-started/scope.md) |
-| Foundations: color, type, shape, layout, motion, accessibility | [Foundations index](docs/foundations/index.md) |
-| Component catalog and coverage | [Components index](docs/components/index.md) |
+| Foundations | [Foundations index](docs/foundations/index.md) |
+| Components | [Components index](docs/components/index.md) |
 | Flutter architecture, theme, custom widgets, tests | [Flutter guide](docs/flutter/index.md) |
 | Android, iOS, web, Windows, macOS, Linux | [Platform guidance](docs/platforms/index.md) |
-| Reusable screen recipes | [Design recipes](docs/design-recipes/index.md) |
+| Screen recipes | [Design recipes](docs/design-recipes/index.md) |
 | AI coding-agent workflow | [AGENTS.md](AGENTS.md) and [agent guide](docs/ai-agent-guide/index.md) |
-| Source provenance and compatibility | [Verified source catalog](docs/reference/official-sources.md), [support matrix](docs/reference/support-matrix.md) |
-| Contribution and issue reporting | [CONTRIBUTING.md](CONTRIBUTING.md) |
-| GitHub Pages publishing | [Publishing guide](docs/reference/publishing.md) |
+| Official source and visual references | [Source catalog](docs/reference/official-sources.md), [visual gallery](docs/reference/visual-reference-gallery.md) |
+| Flutter sample app | [Reference app](examples/flutter/reference_app/) |
 
-## Official starting points
+## Build and validate
 
-- [Material Design](https://m3.material.io/)
-- [Material 3 Expressive blog: Building with M3 Expressive](https://m3.material.io/blog/building-with-m3-expressive)
-- [Material Design usability guidance](https://m3.material.io/foundations/usability/overview)
-- [Flutter Material design](https://docs.flutter.dev/ui/design/material)
-- [Flutter adaptive and responsive design](https://docs.flutter.dev/ui/adaptive-responsive)
-- [Flutter `ThemeData` API](https://api.flutter.dev/flutter/material/ThemeData/ThemeData.html)
+[![Material 3 Expressive button update example](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Fmmm1tos0-03.png?alt=media)](https://m3.material.io/components/buttons/overview)
 
-## How evidence is presented
+*Official button visual reference. Use actual Flutter/platform captures as well as automated tests when validating a product.*
 
-Pages separate **official guidance** (directly supported by cited primary sources), **Flutter fact** (documented API or behavior), and **implementation recommendation** (a reasoned choice where official guidance does not prescribe an implementation). Source availability and version are recorded in the [source catalog](docs/reference/official-sources.md). Exact values are included only where their source and scope are clear. Some Material pages render as a web application and may not expose all content to text-only retrieval; absence from this repository does not mean the design source has no guidance.
-
-## Project status and limitations
-
-This is an independent documentation project. Material 3 Expressive guidance and platform implementations evolve. The source catalog was reviewed on 2026-10-23 where access is explicitly noted; re-check upstream sources before shipping. Flutter examples target the SDK available during repository validation and are not guarantees for earlier SDKs. Visual fidelity must be checked on each target platform and accessibility configuration.
-
-The original source list is preserved and expanded in [link_sources.md](link_sources.md). To report an inaccuracy or propose a source-backed change, open a GitHub issue using the templates, or follow [contribution guidance](CONTRIBUTING.md). The repository intentionally makes no claim of universal or 100% compliance.
-
-## Build and validate the documentation
+Build the documentation from the repository root:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -75,8 +128,24 @@ python scripts/validate_links.py
 mkdocs build --strict
 ```
 
-For the standalone Flutter reference example, run `flutter pub get`, `flutter analyze`, and `flutter test` from `examples/flutter/reference_app/`. See the [validation guide](docs/flutter/testing.md). External link validation is optional because network access may block requests.
+Validate the standalone Flutter example from `examples/flutter/reference_app/`:
 
-## License
+```bash
+flutter pub get
+flutter analyze
+flutter test
+```
 
-Documentation and original examples are licensed under the MIT License; see [LICENSE](LICENSE). Third-party names, specifications, and linked resources remain subject to their respective owners' terms. No Material Design artwork or proprietary assets are redistributed here.
+Flutter widget-test goldens are regression fixtures for the test renderer, not browser/device screenshots; see the [testing guide](docs/flutter/testing.md). No single automated test establishes accessibility or M3 Expressive conformance.
+
+## Evidence, limitations, and image attribution
+
+[![Four Material chip variants](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fgoogle-material-3%2Fimages%2Flzthj7vk-1.png?alt=media)](https://m3.material.io/components/chips/overview)
+
+*Official Material image; open the [chips guidance](https://m3.material.io/components/chips/overview) for source context.*
+
+Material's interactive pages may not expose every specification detail through text retrieval. The [source catalog](docs/reference/official-sources.md) and [component verification ledger](docs/reference/component-verification-ledger.md) state what was actually checked. Visuals and behavior still require review on each intended platform, with relevant text scales, locales, input modes, and assistive technologies.
+
+Images in this README are embedded from Google-hosted Material Design pages, with links to their source pages. The image files are not copied into this repository; rights remain with their respective owners. This attribution and linking do not assert a separate license to download, modify, or redistribute them. See [Google Terms of Service](https://policies.google.com/terms) and the relevant Material source pages for current terms.
+
+The original source list is preserved in [link_sources.md](link_sources.md). To report an inaccuracy or propose a source-backed change, follow [contribution guidance](CONTRIBUTING.md). The repository intentionally makes no claim of universal or 100% compliance.

@@ -1,5 +1,7 @@
 # Input and feedback
 
+For the checked Material source metadata, local Flutter API availability, state checklist, visual tests, and gaps for each row, see the [component verification ledger](../reference/component-verification-ledger.md).
+
 | Design component | Flutter mapping | Implementation notes |
 |---|---|---|
 | Text fields | `TextField`, `TextFormField`, `InputDecoration` | Labels, errors, helper text, keyboard type, and validation must remain accessible. [Guide](https://m3.material.io/components/text-fields/overview). |

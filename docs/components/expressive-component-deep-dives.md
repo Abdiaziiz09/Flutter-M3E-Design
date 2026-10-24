@@ -1,6 +1,6 @@
 # M3 Expressive component deep dives
 
-This page expands the less-covered component topics in the [component coverage matrix](../reference/component-coverage.md): button groups, split buttons, FAB menus, badges, dividers, side sheets, and time pickers. It is an implementation reference, not a complete reproduction of Material's interactive specifications or an assertion that each component has an M3 Expressive-only design.
+This page expands the less-covered component topics in the [component coverage matrix](../reference/component-coverage.md): button groups, split buttons, FAB menus, badges, dividers, side sheets, and time pickers. The per-component [verification ledger](../reference/component-verification-ledger.md) records which official Material source metadata and local Flutter APIs were checked. This is an implementation reference, not a complete reproduction of Material's interactive specifications or an assertion that each component has an M3 Expressive-only design.
 
 ## Evidence and version boundary
 

@@ -49,6 +49,7 @@ nav:
       - Content and selection: components/content-and-selection.md
       - Input and feedback: components/input-and-feedback.md
       - M3E component deep dives: components/expressive-component-deep-dives.md
+      - Component verification ledger: reference/component-verification-ledger.md
   - Theming: theming/index.md
   - Flutter:
       - Overview: flutter/index.md
@@ -80,5 +81,6 @@ nav:
       - Flutter API reference: reference/flutter-api-reference.md
       - Support matrix: reference/support-matrix.md
       - Component coverage: reference/component-coverage.md
+      - Official visual references: reference/visual-reference-gallery.md
       - Glossary: reference/glossary.md
       - Publishing: reference/publishing.md

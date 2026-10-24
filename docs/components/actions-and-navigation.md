@@ -1,5 +1,7 @@
 # Actions and navigation
 
+For the checked Material source metadata, local Flutter API availability, state checklist, visual tests, and gaps for each row, see the [component verification ledger](../reference/component-verification-ledger.md).
+
 | Design component | Flutter mapping (verify SDK API) | Expressive status and implementation note |
 |---|---|---|
 | Buttons | `FilledButton`, `OutlinedButton`, `TextButton`, `ElevatedButton` | Material button families exist; verify current M3E-specific variants, hierarchy, and state behavior in the [official buttons guidance](https://m3.material.io/components/buttons/overview). |

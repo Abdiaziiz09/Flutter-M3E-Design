@@ -23,9 +23,9 @@ Flutter's Material library implements Material Design components and theming. Se
 
 ### Typography
 
-[![Expressive typography can enhance hierarchy and add personality](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi9us2w-blog9.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
+[![The updated type scale includes new emphasized text styles](https://firebasestorage.googleapis.com/v0/b/design-spec/o/projects%2Fm3%2Fimages%2Fmoi65wlg-blog1.png?alt=media)](https://m3.material.io/blog/building-with-m3-expressive)
 
-*Official Material illustration; the article caption discusses expressive typography and hierarchy. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
+*Official Material illustration; the article caption identifies the updated type scale and emphasized text styles. See the [source article](https://m3.material.io/blog/building-with-m3-expressive).*
 
 ### Shape
 

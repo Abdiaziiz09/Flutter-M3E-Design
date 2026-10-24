@@ -48,6 +48,7 @@ nav:
       - Actions and navigation: components/actions-and-navigation.md
       - Content and selection: components/content-and-selection.md
       - Input and feedback: components/input-and-feedback.md
+      - M3E component deep dives: components/expressive-component-deep-dives.md
   - Theming: theming/index.md
   - Flutter:
       - Overview: flutter/index.md
@@ -66,6 +67,7 @@ nav:
       - Linux: platforms/linux.md
   - Design recipes:
       - Overview: design-recipes/index.md
+      - Expressive screen recipes: design-recipes/expressive-screen-recipes.md
   - AI agent guide:
       - Overview: ai-agent-guide/index.md
       - Workflow: ai-agent-guide/implementation-workflow.md

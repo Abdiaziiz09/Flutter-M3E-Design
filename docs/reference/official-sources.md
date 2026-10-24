@@ -16,6 +16,21 @@ Reviewed 2026-10-23 where access status says **Verified**. "Verified" means the 
 | Motion overview | Google / foundation | https://m3.material.io/styles/motion/overview/how-it-works | Motion concepts | Fetch failed in this environment; unverified on review date. |
 | Layout overview | Google / foundation | https://m3.material.io/foundations/layout/layout-overview/overview | Layout guidance | URL retained; details not numerically asserted. |
 
+
+### Component deep-dive sources reviewed 2026-10-24
+
+The following canonical Material component pages were checked by title and text-accessible description/metadata. Several pages rely on interactive content that was not fully extractable; this is not exhaustive verification of their diagrams, token values, behavior, states, or version history. The deep-dive page therefore cites these for purpose/variant identification and directs readers to inspect the current component page for detailed requirements.
+
+| Component source | URL | What the accessible source confirms | Limitation |
+|---|---|---|---|
+| Button groups | https://m3.material.io/components/button-groups/overview | Page describes groups as organizing buttons and adding interactions. | Detailed anatomy/variants not fully inspected. |
+| Split buttons | https://m3.material.io/components/split-button/overview | Page describes a menu of options related to an action. | Interaction states and visual specification not fully inspected. |
+| FAB menu | https://m3.material.io/components/fab-menu/overview | Page describes multiple related actions opening from a FAB. | Full motion/anatomy guidance not extracted. |
+| Badges | https://m3.material.io/components/badges/overview | Page describes notification, count, or status information attached to navigation items/icons; labels or numbers may be used. | Detailed usage guidance not fully extracted. |
+| Divider | https://m3.material.io/components/divider/overview | Page describes a thin line grouping content in lists and containers. | Detailed variants and usage guidance not fully extracted. |
+| Side sheets | https://m3.material.io/components/side-sheets/overview | Page identifies standard and modal side sheets for secondary side-anchored content. | Detailed behavior/layout guidance not fully extracted. |
+| Time pickers | https://m3.material.io/components/time-pickers/overview | Page identifies dial and input types. | Detailed state/locale/token guidance not fully extracted. |
+
 ## Flutter
 
 | Title | Publisher / category | URL | Supports | Status and limitations |
@@ -28,6 +43,19 @@ Reviewed 2026-10-23 where access status says **Verified**. "Verified" means the 
 | Accessibility and internationalization | Flutter / guide | https://docs.flutter.dev/ui/accessibility-and-internationalization/accessibility | Flutter accessibility guidance | URL recorded; exact current page content not retrieved. |
 | Supported platforms | Flutter / reference | https://docs.flutter.dev/reference/supported-platforms | Flutter platform support | Official source; verify current platform/OS versions. |
 | Platform integration | Flutter / guide | https://docs.flutter.dev/platform-integration | Native platform integration and setup | Verified overview. |
+
+
+### Component API sources checked 2026-10-24
+
+
+| Component APIs checked 2026-10-24 | Flutter API | API fact used in the component deep dive | Version limitation |
+|---|---|---|---|
+| Segmented button | https://api.flutter.dev/flutter/material/SegmentedButton-class.html | Bounded option selection; single-select default and optional multi-select. | Verify API and behavior against the app SDK. |
+| Menu anchor | https://api.flutter.dev/flutter/material/MenuAnchor-class.html | Anchored-menu building block; not itself a split button or FAB menu specification. | Verify focus/placement behavior against the app SDK and targets. |
+| Badge | https://api.flutter.dev/flutter/material/Badge-class.html | Optional label; Flutter API describes small and labeled badge forms. | API existence does not establish M3E parity or announcement behavior. |
+| Divider | https://api.flutter.dev/flutter/material/Divider-class.html | Separator widget with documented list/drawer use. | Verify selected SDK and semantic output. |
+| Scaffold end drawer | https://api.flutter.dev/flutter/material/Scaffold/endDrawer.html | Side panel attached to scaffold edge; drawer API is not a side-sheet equivalence claim. | Verify directionality and behavior in the app SDK. |
+| Time picker | https://api.flutter.dev/flutter/material/showTimePicker.html | Dialog API exposes entry mode and returns selected time or cancellation. | Verify locale, theming, and behavior against the app SDK. |
 
 ## Packages and implementation repositories
 

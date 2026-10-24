@@ -6,6 +6,8 @@ Recipes are patterns, not official templates. Any screen-specific spacing, break
 
 Use a page heading and grouped settings sections. Choose controls by semantics: switch for an immediate on/off preference, checkbox for selection in a form, and a navigation row when the item opens a detail screen. Provide concise labels, supporting text when needed, and visible focus. On wide windows, consider a persistent category navigation plus a constrained detail pane; select this based on task and space rather than a universal threshold. Verify RTL, text scaling, keyboard navigation, and screen-reader labels.
 
+See also the [expressive screen recipes](expressive-screen-recipes.md) for onboarding, profile, search, feed, chat, notifications, and account settings patterns.
+
 ## Dashboard
 
 Establish one primary task and use semantic headings, content grouping, and surface roles. Avoid encoding every metric as a card; use the simplest structure that makes comparison and action clear. Reflow grids when space changes and preserve reading order. Test empty/loading/error states and ensure data visualizations have textual alternatives.

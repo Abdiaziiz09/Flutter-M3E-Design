@@ -12,16 +12,17 @@ void main() {
     expect(find.text('Reference interface'), findsOneWidget);
     expect(find.text('Material 3 Flutter example'), findsOneWidget);
 
-    await tester.tap(find.text('Settings').last);
+    await tester.tap(find.text('Settings').first);
     await tester.pumpAndSettle();
 
     expect(find.text('Example preference'), findsOneWidget);
-    expect(tester.widget<SwitchListTile>(find.byType(SwitchListTile)).value, isFalse);
+    final exampleSwitch = find.byKey(const ValueKey('example-preference-switch'));
+    expect(tester.widget<SwitchListTile>(exampleSwitch).value, isFalse);
 
-    await tester.tap(find.byType(SwitchListTile));
+    await tester.tap(exampleSwitch);
     await tester.pumpAndSettle();
 
-    expect(tester.widget<SwitchListTile>(find.byType(SwitchListTile)).value, isTrue);
+    expect(tester.widget<SwitchListTile>(exampleSwitch).value, isTrue);
   });
 
   testWidgets('uses rail on a wide viewport', (tester) async {

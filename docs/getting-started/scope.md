@@ -8,7 +8,11 @@
 
 ## Flutter relationship
 
-Flutter's `package:flutter/material.dart` contains Material widgets and theming APIs. `ThemeData.useMaterial3` selects Flutter's Material 3 styling behavior. `ThemeData`, `ColorScheme`, `TextTheme`, and per-component theme data allow configuration. These APIs do not certify that M3 Expressive-only component flexibility, motion, shape morphing, or Android behavior is present.
+Flutter's Material library is available through the legacy `package:flutter/material.dart` import and, beginning with Flutter 3.47, through the standalone `package:material_ui/material_ui.dart` package. Contributions to the in-framework Material and Cupertino libraries were frozen starting in Flutter 3.44; Flutter's migration guide describes the standalone packages and the planned deprecation of the in-framework libraries. Choose and verify the import against the app's pinned Flutter SDK and dependencies. Do not mix types from the legacy and standalone libraries in one integration; use the documented compatibility bridge only when legacy dependencies require it.
+
+`ThemeData.useMaterial3` selects Flutter's Material 3 styling behavior. `ThemeData`, `ColorScheme`, `TextTheme`, and per-component theme data allow configuration. These APIs do not certify that M3 Expressive-only component flexibility, motion, shape morphing, or Android behavior is present. Flutter's M3 Expressive component migration work is incremental: the official `material_ui` checklist describes component-level opt-in while retaining Material 3 defaults. This is Flutter package implementation guidance, not a universal requirement that every app expose an expressive theme switch.
+
+The reference app's dependency and import examples are tied to that app's declared versions. Agents must inspect the target app's `pubspec.yaml`, lockfile, and Flutter version rather than copying a package constraint from this guide.
 
 Classify implementation needs:
 

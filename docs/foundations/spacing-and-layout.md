@@ -53,12 +53,12 @@ Fixed dimensions break under text scaling, translation, split-screen, and window
 ```dart
 // WRONG
 SizedBox(width: 320, child: content)        // breaks on narrow screens
-SizedBox(height: 56, child: Text(label))    // clips at 200% text scale
+SizedBox(height: 56, child: Text(label))    // may clip at large platform text settings
 
 // CORRECT
 ConstrainedBox(
   constraints: BoxConstraints(
-    minHeight: kMinInteractiveDimension,  // 48dp minimum
+    minHeight: kMinInteractiveDimension,  // framework-defined interactive dimension
     maxWidth: 400,                        // guided maximum, not fixed
   ),
   child: Text(label, softWrap: true),
@@ -245,6 +245,7 @@ Checklist:
 - [ ] `LayoutBuilder` used for responsive decisions — not `Platform` checks.
 - [ ] Content max-width constrained on expanded viewports.
 - [ ] `SafeArea` applied to scrollable and form content.
-- [ ] Text-scale 200% — no clipped labels, no overflow, no unreachable controls.
+- [ ] Largest relevant platform text settings — no clipped labels, overflow, or unreachable controls.
+- [ ] Optional project-defined 200% text-scale scenario — no clipping or overflow.
 - [ ] RTL locale — layout, icons, and text all mirror correctly.
 - [ ] Narrow viewport (360dp) — nothing overflows or requires horizontal scroll.

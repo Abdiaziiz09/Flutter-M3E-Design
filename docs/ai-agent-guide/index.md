@@ -1,6 +1,6 @@
 # AI agent guide
 
-Use the repository-root `AGENTS.md` before implementation. This guide is the operational reference for applying the repository as a complete M3E design-system reference.
+Use the repository-root `AGENTS.md` before implementation. This guide is the operational reference for applying the repository as a complete M3E design-system reference. Its guidance is agent-neutral: use it with any AI coding agent, regardless of provider, model, editor, or agent-specific configuration format.
 
 ## Start here
 
@@ -27,11 +27,13 @@ Every implementation submission must include:
 
 - Files changed and their purpose
 - `flutter --version` output (exact)
-- `material_ui` version from `pubspec.lock`
+- `material_ui` version from `pubspec.lock`, when the target project uses it
 - Platforms tested with device/emulator names
 - Actual output of `flutter analyze`, `flutter test`, `validate_docs.py`
 - Confirmation that no magic numbers were used (or a list of labeled custom choices)
 - Accessibility checks performed
 - Known gaps, unverified items, and remaining limitations
+
+Report the target project's actual versions and executed checks; do not assume the reference app's dependency versions or describe an unrun check as passed.
 
 Do not infer full M3 Expressive compliance from a theme flag, screenshot resemblance, or a community package name alone.

@@ -1,6 +1,6 @@
-# AI agent quick-start: implementing M3E in Flutter
+# AI coding agent quick-start: implementing M3E in Flutter
 
-This page is the **entry point for any AI agent** assigned to build or modify a Flutter application using Material 3 Expressive. Read this before touching any code.
+This page is the **agent-neutral entry point** for any AI coding assistant assigned to build or modify a Flutter application using Material 3 Expressive. It does not depend on a particular model, vendor, editor, agent mode, or prompt-file format. Follow the repository's canonical documentation and the target project's actual SDK/package versions; do not assume that a vendor-specific instruction file is available.
 
 ---
 
@@ -24,7 +24,7 @@ Classify every requirement before writing a line of code:
 
 Read these documents in order before writing any widget code:
 
-1. `AGENTS.md` — mandatory rules (zero magic numbers, edge-case resolutions)
+1. `AGENTS.md` — repository rules and edge-case resolutions
 2. `docs/getting-started/scope.md` — what M3E is and what it is not
 3. `docs/reference/support-matrix.md` — which platforms are targeted
 4. The relevant foundation page(s) for your task (color, shape, motion, typography, spacing)
@@ -34,10 +34,11 @@ Read these documents in order before writing any widget code:
 
 ## Step 2: Bootstrap the theme
 
-Every Flutter app using this design system must include `M3EThemeExtension` in its theme. This is the source of truth for all design tokens.
+Apps that use this repository's custom widgets or tokens need the corresponding `M3EThemeExtension` configured. It is a project-defined extension, not a Flutter or Material requirement for every M3E-informed Flutter app. The extension is the source of truth for tokens defined by this repository; check the token registry's evidence label before treating a value as official Material guidance.
 
 ```dart
-// pubspec.yaml: ensure material_ui: ^1.8.0 is declared
+// Reference-app dependency: examples/flutter/reference_app/pubspec.yaml
+// Check the target application's own dependency constraints and lockfile.
 import 'package:material_ui/material_ui.dart';
 import 'lib/m3e/m3e.dart'; // project token extension
 
@@ -116,7 +117,7 @@ BorderRadius.circular(m3e.shapes.radiusMedium)
 SizedBox(height: m3e.spacing.space48)
 ```
 
-The one permitted exception: `kMinInteractiveDimension` (Flutter framework constant, 48dp).
+Use named project tokens for design dimensions. For framework-defined behavioral constraints, prefer the relevant Flutter constants over duplicating their numeric values. A project token is a local implementation choice, not automatically an official Material token.
 
 ### Rule 2: Use semantic colors
 
@@ -130,8 +131,9 @@ Container(color: const Color(0xFF6750A4))
 Container(color: theme.colorScheme.primary)
 ```
 
-### Rule 3: All interactive elements must meet 48×48dp minimum touch targets
+### Rule 3: Preserve usable touch targets
 
+Follow the target platform's tap-target guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS). This is platform guidance, not the WCAG 2.2 SC 2.5.8 minimum; see [touch-target guidance](../foundations/accessibility.md) and apply the criteria relevant to the target platform. The token-based 48×48 example below is a project choice and should not be treated as universal across platforms.
 ```dart
 // WRONG
 GestureDetector(child: SizedBox(width: 28, height: 28, child: Icon(Icons.close)))
@@ -139,14 +141,16 @@ GestureDetector(child: SizedBox(width: 28, height: 28, child: Icon(Icons.close))
 // CORRECT
 IconButton(
   onPressed: onTap,
-  style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
+  style: IconButton.styleFrom(
+    minimumSize: Size.square(m3e.spacing.space48),
+  ),
   icon: const Icon(Icons.close_rounded),
 )
 ```
 
 ### Rule 4: No fixed heights on text containers
 
-Text must scale to 200% without clipping. Use `ConstrainedBox` with `minHeight`, not `SizedBox` with `height`.
+Preserve text at large platform scale settings. A 200% scale can be an additional project-defined test scenario, not a universal platform maximum. Use content-driven height or `ConstrainedBox` with `minHeight`, not fixed heights that clip text.
 
 ```dart
 // WRONG
@@ -154,7 +158,7 @@ SizedBox(height: 56, child: Text(label))
 
 // CORRECT
 ConstrainedBox(
-  constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
+  constraints: BoxConstraints(minHeight: m3e.spacing.space48),
   child: Text(label, softWrap: true),
 )
 ```
@@ -321,11 +325,12 @@ Then manually verify:
 - [ ] Light theme renders correctly
 - [ ] Dark theme renders correctly
 - [ ] Text scale 1.5× — no clipping, no overflow
-- [ ] Text scale 2.0× — no clipping, no overflow
+- [ ] Largest relevant platform text settings — no clipping, overflow, or unreachable controls
+- [ ] Optional project-defined 200% text-scale scenario — no clipping or overflow
 - [ ] Narrow viewport (360dp) — no overflow, all controls reachable
 - [ ] Wide viewport (1200dp) — navigation and layout adapt correctly
 - [ ] RTL locale — layout mirrors correctly
-- [ ] All interactive elements pass 48×48dp touch target
+- [ ] Touch targets follow the applicable target-platform guidance
 - [ ] Screen reader announces interactive elements meaningfully
 - [ ] Reduced motion — no animations, state changes are still visible
 

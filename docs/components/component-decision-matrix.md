@@ -27,7 +27,7 @@ Read this before composing any UI. It maps every common M3E design intent to its
 | Secondary / tonal action | `FilledButton.tonal` | — | E2 | Second-tier emphasis. Fill: `colorScheme.secondaryContainer`. |
 | Ghost / text-only action | `TextButton` | — | E2 | Lowest emphasis. Use in dialogs, alongside higher-emphasis buttons. |
 | Outlined / medium action | `OutlinedButton` | — | E2 | Medium emphasis. Border: `colorScheme.outline`. |
-| Icon-only action | `IconButton` (+ `.filled`, `.filledTonal`, `.outlined`) | — | E2 | Always set `tooltip` / `Semantics(label:)`. Min size: 48×48dp. |
+| Icon-only action | `IconButton` (+ `.filled`, `.filledTonal`, `.outlined`) | — | E2 | Always set `tooltip` / `Semantics(label:)`. Follow platform tap-target guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS); see [accessibility guidance](../foundations/accessibility.md). |
 | Group of exclusive choices | `SegmentedButton<T>` | — | E2 | Mutually exclusive selection within a bounded group. **Not** a group of independent actions. |
 | Group of independent actions | Compose with `Row` + buttons | `M3EConnectedButtonGroup` | E3 | Connected button group. Shared outer border, inner dividers. Use `M3EButtonDensity`. |
 | Primary action + overflow menu | Compose `FilledButton` + `MenuAnchor` | `M3ESplitButton` | E1 | No stock Flutter split-button widget. Custom composition. |
@@ -287,7 +287,7 @@ These requirements apply to every widget in the matrix above without exception:
 
 | Requirement | Implementation |
 |---|---|
-| Minimum touch target | 48×48dp via `minimumSize` or `ConstrainedBox(minHeight: kMinInteractiveDimension)` |
+| Touch target | Follow the relevant platform guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS). This is distinct from WCAG 2.2 SC 2.5.8's 24×24 CSS-pixel minimum for pointer targets; see [accessibility guidance](../foundations/accessibility.md). |
 | Semantic label on icon-only controls | `IconButton(tooltip: ...)` or `Semantics(label: ..., child: ...)` |
 | Text scaling | Never use fixed-height containers for text. Use `ConstrainedBox(minHeight:)` |
 | Contrast | Use semantic `ColorScheme` pairs; verify custom overrides with a contrast checker |

@@ -5,7 +5,9 @@ Independent, source-traceable documentation. Not an official Google specificatio
 Start with:
 - [Scope and terminology](docs/getting-started/scope.md)
 - [Support matrix](docs/reference/support-matrix.md)
+- [Agent-neutral M3E quick-start](docs/ai-agent-guide/m3e-quick-start.md)
 - [Agent workflow](docs/ai-agent-guide/implementation-workflow.md)
+- [Design decision rules](docs/ai-agent-guide/design-decision-rules.md)
 - [Foundations](docs/foundations/index.md)
 - [Component catalog](docs/components/index.md)
 - [Flutter guide](docs/flutter/index.md)

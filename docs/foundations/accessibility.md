@@ -10,6 +10,16 @@ Accessibility is part of the interface specification, not a final polish pass. F
 - Do not rely only on color, motion, or shape to convey state.
 - Ensure dialogs, menus, sheets, and validation errors announce and manage focus correctly.
 
+## Touch targets and conformance criteria
+
+Flutter's accessibility guidance recommends sufficiently large tap targets and cites platform recommendations of at least 48x48 dp for Android and 44x44 pt for iOS. Use the applicable target-platform guidance rather than treating one platform's units as universal. Verify the effective hit region, including when the visible icon or shape is smaller.
+
+Do not label 48x48 dp as the WCAG minimum. WCAG 2.2 Success Criterion 2.5.8 (Level AA) specifies a minimum target size of 24x24 CSS pixels for pointer inputs, subject to its stated exceptions, including spacing and equivalent-control exceptions. WCAG and platform touch recommendations use different contexts and units; apply the relevant criteria to the actual target platform and product.
+
+## Large text testing
+
+Flutter text responds to platform text-size settings, but layouts still need enough room for the resulting text. Test the largest relevant text settings on each target platform and check wrapping, scrolling, action reachability, and focus order. A 200% text-scale run can be included as an additional project-defined test scenario; it is not a universal maximum or a substitute for checking platform settings.
+
 ## RTL and localization verification rubric
 
 For every component and screen, verify the following:

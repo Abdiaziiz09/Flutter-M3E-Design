@@ -100,7 +100,7 @@ Priorities: **P0** blocks any production-ready claim, **P1** required for M3E al
 
 - [ ] **Replace Ahem-font goldens** with real-font goldens using `alchemist` (or Flutter's built-in `matchesGoldenFile` with loaded fonts). Keep CI goldens deterministic across OSes.
 - [ ] **State matrix tests** for each component: default, hover, focus, pressed, selected, disabled, loading, error, expanded.
-- [ ] **Text scale and locale matrix:** 1.0 / 1.5 / 2.0 text scale, long strings, RTL, one non-Latin locale.
+- [ ] **Text scale and locale matrix:** test the largest relevant platform text settings, plus optional project-defined 1.0 / 1.5 / 2.0 scale scenarios, long strings, RTL, and one non-Latin locale. The 2.0 scenario is not a universal platform maximum.
 - [ ] **Accessibility tests:** semantics, minimum tap target (`kMinInteractiveDimension`), contrast checks via Flutter's `meetsGuideline` matchers, keyboard traversal.
 - [ ] **`integration_test`** on at least one Android and one iOS target, plus one desktop target.
 
@@ -183,7 +183,7 @@ ConstrainedBox(
 )
 ```
 
-Required check: run the widget at text scale 2.0 (`MediaQuery` override or `tester.platformDispatcher.textScaleFactorTestValue`) and confirm no overflow, clipping or unreachable controls.
+Required check: verify the widget at the largest relevant platform text settings. The project may additionally run a 2.0 scale scenario (for example, through `MediaQuery` or the test platform dispatcher) and confirm no overflow, clipping, or unreachable controls; 2.0 is a project test value, not a universal platform maximum.
 
 **Scenario C: Controls crowd or wrap at narrow widths**
 

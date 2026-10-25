@@ -22,6 +22,7 @@ This maintained entry file points to canonical documentation; it is intentionall
 - Component verification ledger: `docs/reference/component-verification-ledger.md`
 - Phase 0/1 audit and 38-entry inventory: `docs/reference/m3e-phase0-1-audit.md`, `docs/reference/m3e-master-component-inventory.csv`, `docs/reference/m3e-master-component-inventory.json`, `docs/reference/m3e-source-evidence-ledger.csv`
 - Agent workflow and checklist: `docs/ai-agent-guide/implementation-workflow.md`, `docs/ai-agent-guide/validation-checklist.md`
+- Agent-neutral quick-start and decision rules: `docs/ai-agent-guide/m3e-quick-start.md`, `docs/ai-agent-guide/design-decision-rules.md`
 - Full machine-facing index: `llms.txt`
 
 Do not manually duplicate these pages into this file. Update the canonical documents and this concise index together as needed.

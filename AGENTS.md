@@ -25,7 +25,7 @@ Use this repository as an independent implementation reference, not as an offici
 > [!IMPORTANT]
 > **Strict Operational Rule**: AI agents and developers are **strictly forbidden** from writing raw numeric values ("Magic Numbers") for margins, paddings, layout bounds, border radii, or animation durations.
 >
-> All layout and styling parameters must strictly derive from standard tokens via `context.m3e` or `M3EThemeExtension`.
+> Use the repository's named tokens via `context.m3e` or `M3EThemeExtension` for layout and styling parameters. These are project-defined values unless the token registry explicitly records authoritative Material evidence; do not present project tokens as official Material requirements.
 
 1. **Spacing & Insets**:
    - Always use `context.m3e.spacing.*` tokens or predefined insets:
@@ -148,9 +148,9 @@ Widget buildHeaderCompliant(BuildContext context) {
 
 ---
 
-### Scenario 2: Text Truncation under Extreme Text Scaling (200%)
+### Scenario 2: Text Truncation under Large Text Scaling
 
-**Root Cause**: Fixed container heights (`height: 48`) or clipping containers that do not account for users with accessibility text scaling enabled (up to 2.0x font scale).
+**Root Cause**: Fixed container heights or clipping containers that do not account for the larger text sizes available through platform accessibility settings. Flutter does not define 2.0x as a universal maximum; test the target platforms' supported large text settings. A 200% scale may be used as an additional project test scenario when applicable.
 
 ❌ **Non-Compliant Example**:
 ```dart
@@ -173,7 +173,7 @@ Widget buildActionTileCompliant(BuildContext context, String title) {
 
   return ConstrainedBox(
     constraints: BoxConstraints(
-      minHeight: m3e.spacing.space48, // Respects 48dp minimum accessible touch target
+      minHeight: m3e.spacing.space48, // Project token; size tap targets for the target platform
     ),
     child: Container(
       alignment: Alignment.centerLeft,
@@ -197,11 +197,11 @@ Widget buildActionTileCompliant(BuildContext context, String title) {
 
 ### Scenario 3: Hit Target Boundary Clipping on Dense Controls
 
-**Root Cause**: Shrinking buttons or interactive elements below the WCAG / Material minimum touch target of 48x48dp without padding expanding the touch zone.
+**Root Cause**: Shrinking buttons or interactive elements without preserving a usable activation area. Flutter's accessibility guidance recommends usable tap targets and cites platform recommendations of 48x48 dp for Android and 44x44 pt for iOS. This is distinct from WCAG 2.2 SC 2.5.8, which sets a 24x24 CSS-pixel minimum for web pointer targets with defined exceptions; do not describe 48x48 dp as a universal or WCAG minimum.
 
 ❌ **Non-Compliant Example**:
 ```dart
-// BAD: Compact icon button with 28x28 hit target violates WCAG touch target standards
+// BAD: The target may be too small for comfortable touch activation
 Widget buildSmallIconButtonBad(BuildContext context, VoidCallback onTap) {
   return GestureDetector(
     onTap: onTap,
@@ -216,16 +216,17 @@ Widget buildSmallIconButtonBad(BuildContext context, VoidCallback onTap) {
 
 ✅ **Compliant M3E Resolution**:
 ```dart
-// GOOD: Uses IconButton with standard minimum touch bounds or explicit MaterialTapTargetSize
+// GOOD: Meets the Flutter/Android touch-target recommendation using project spacing tokens
 Widget buildSmallIconButtonCompliant(BuildContext context, VoidCallback onTap) {
   final theme = Theme.of(context);
+  final m3e = context.m3e;
 
   return IconButton(
     onPressed: onTap,
     iconSize: 20,
     visualDensity: VisualDensity.compact,
     style: IconButton.styleFrom(
-      minimumSize: const Size(48, 48), // WCAG 2.1 AA / Material standard 48x48 touch target
+      minimumSize: Size.square(m3e.spacing.space48),
       tapTargetSize: MaterialTapTargetSize.padded,
       foregroundColor: theme.colorScheme.onSurfaceVariant,
     ),

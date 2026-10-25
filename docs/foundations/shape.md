@@ -104,5 +104,5 @@ Material(
 - [ ] Text and icon content is not clipped by the shape.
 - [ ] Nested containers have correct inner radii (outer radius minus padding).
 - [ ] Focus indicator is visible outside or inside the shape boundary (check `FocusDecoration` behavior).
-- [ ] Touch target extends to the full 48×48dp minimum, even for non-rectangular shapes.
+- [ ] Touch target remains usable and follows target-platform guidance (Flutter cites 48×48 dp for Android and 44×44 pt for iOS), even when the visible shape is non-rectangular. See [accessibility guidance](accessibility.md).
 - [ ] Shape morphing uses `m3e.motion.createSpatialSpring()` and has a `Duration.zero` reduced-motion fallback.

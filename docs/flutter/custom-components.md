@@ -9,7 +9,7 @@ Extend Flutter only when the component requirements cannot be met by verified bu
 1. **Identify the Visual and Interaction Gap**: Verify that the required M3E component behavior is not provided by the baseline Flutter SDK.
 2. **Compose Standard Primitives**: Prefer combining existing Flutter widgets (`Material`, `InkWell`, `Semantics`, `LayoutBuilder`, and spring animation primitives) rather than forking or copying framework internals.
 3. **Bind to Semantic Tokens**: Every component must source its visual parameters from `ColorScheme`, `context.m3e.spacing`, and `context.m3e.shapes`. Zero magic numbers are permitted.
-4. **Preserve Accessibility**: Guarantee WCAG touch boundaries (minimum 48x48dp), font scaling resilience (up to 200%), and bidirectional layout (RTL) support.
+4. **Preserve Accessibility**: Follow the relevant platform touch-target guidance (Flutter's guide cites 48x48 dp for Android and 44x44 pt for iOS), preserve text at large platform scale settings, and support bidirectional layout (RTL). Do not conflate platform recommendations with WCAG 2.2 target-size criteria; see [accessibility guidance](../foundations/accessibility.md).
 5. **Spring Physics**: Use `M3EMotion.createSpatialSpring()` and `M3EMotion.createEffectSpring()` for state transitions instead of linear or ease-in-out curves.
 
 ---
@@ -67,7 +67,7 @@ M3EAppBar(
 - **Key Characteristics**:
   - Implements `PreferredSizeWidget` with responsive height scaling.
   - Supports subtitles and badges.
-  - Minimum 48x48dp touch bounds on all action buttons.
+  - Action buttons preserve the applicable platform-recommended touch target.
 
 ---
 
